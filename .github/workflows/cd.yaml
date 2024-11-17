@@ -9,6 +9,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   EKS_CLUSTER: ${{ secrets.EKS_CLUSTER }}
   EKS_REGION: ${{ secrets.EKS_REGION }}
+  IMAGE_TAG: "latest"
   
 jobs:
   deploy:
