@@ -9,7 +9,7 @@ build:
     - image: public.ecr.aws/sctp-sandbox/stephen-flask-crud
       context: backend
       docker:
-        dockerfile: backend/Dockerfile
+        dockerfile: Dockerfile
     
       
 manifests:
