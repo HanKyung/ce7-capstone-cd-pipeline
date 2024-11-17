@@ -7,9 +7,9 @@ build:
       template: "{{.IMAGE_TAG}}"
   artifacts:
     - image: public.ecr.aws/sctp-sandbox/stephen-flask-crud
-      context: ./backend
+      context: backend
       docker:
-        dockerfile: ./backend/Dockerfile
+        dockerfile: backend/Dockerfile
     
       
 manifests:
