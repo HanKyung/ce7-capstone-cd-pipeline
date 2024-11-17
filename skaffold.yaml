@@ -2,8 +2,11 @@ apiVersion: skaffold/v3
 kind: Config
 
 build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.IMAGE_TAG}}"
   artifacts:
-    - image: public.ecr.aws/sctp-sandbox/stephen-flask-crud:latest
+    - image: public.ecr.aws/sctp-sandbox/stephen-flask-crud
       context: ./backend
       docker:
         dockerfile: ./backend/Dockerfile
