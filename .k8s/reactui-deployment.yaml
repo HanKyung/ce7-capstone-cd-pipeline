@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: kube-system
+  name: reactui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactui
+  template:
+    metadata:
+      labels:
+        app: reactui
+    spec:
+      containers:
+      - name: reactui
+        image: public.ecr.aws/sctp-sandbox/stephen-react:latest
+        ports:
+        - containerPort: 3000
+        # resources:
+        #   requests:
+        #     memory: "256Mi"
+        #     cpu: "200m"
+        #   limits:
+        #     memory: "512Mi"
+        #     cpu: "500m"
+        env:
+        - name: NODE_ENV
+          value: "production"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: kube-system
+  name: reactui-service
+spec:
+  type: NodePort # LoadBalancer
+  selector:
+    app: reactui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      # nodePort: 31000
+  
